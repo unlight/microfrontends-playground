@@ -1,0 +1,17 @@
+nav > ul {
+    margin: 0.5em 0;
+    padding: 0;
+}
+
+nav > ul > li {
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+    color: #ed0db1;
+}
+
+a:hover {
+    text-decoration: underline;
+}
