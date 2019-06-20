@@ -39,6 +39,7 @@ module.exports = async (options = {}) => {
             header: `${sourcePath}/header.component/header.component.ts`,
             nav: `${sourcePath}/nav.component/nav.component.ts`,
             entry_list: `${sourcePath}/entry-list.component/entry-list.component.ts`,
+            home: `${sourcePath}/home.component/home.component.ts`,
         },
         output: {
             path: buildPath,
@@ -58,6 +59,11 @@ module.exports = async (options = {}) => {
             contentBase: [buildPath],
             overlay: false,
             disableHostCheck: true,
+            stats: {
+                warningsFilter: [
+                    'require function is used',
+                ],
+            }
         },
 
         module: {
@@ -142,10 +148,10 @@ module.exports = async (options = {}) => {
             (() => {
                 const HtmlWebpackPlugin = require('html-webpack-plugin');
                 return new HtmlWebpackPlugin({
-                    // template: './src/index.html',
+                    template: './src/index.html',
                     filename: 'index.html',
                     inject: true,
-                    // chunks: ['app'],
+                    chunks: ['libs', 'app'],
                     config: { ...options },
                 });
             })(),

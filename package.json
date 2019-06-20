@@ -1,21 +1,18 @@
 {
   "name": "microfrontends-playground",
+  "private": true,
   "version": "0.0.0-dev",
   "license": "MIT",
   "description": "",
-  "main": "index.js",
-  "typings": "index.d.ts",
   "author": "2019",
   "keywords": [],
   "engines": {
     "node": ">=6"
   },
-  "repository": {
-    "type": "git"
-  },
   "dependencies": {
     "@shinin/load-script": "^1.0.4",
-    "cherrytree": "^2.4.1"
+    "cherrytree": "^2.4.1",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^3.1.3",
@@ -23,9 +20,11 @@
     "file-loader": "^4.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "simplytyped": "3.2.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.3",
+    "typescript": "^3.5.2",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4",
     "webpack-dev-server": "^3.7.2"

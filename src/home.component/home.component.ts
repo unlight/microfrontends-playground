@@ -1,4 +1,4 @@
-export class HeaderComponent extends HTMLElement {
+customElements.define('home-component', class HomeComponent extends HTMLElement {
 
     static get observedAttributes() {
         return [];
@@ -10,7 +10,13 @@ export class HeaderComponent extends HTMLElement {
      * have been fully parsed
      */
     connectedCallback() {
-        this.innerHTML = '<h1>Microfrontends</h1>';
+        this.innerHTML = `<h4>Home</h4>
+        <p>
+            <a href="#/home/feature1">Feature 1</a>
+            <a href="#/home/feature2">Feature 2</a>
+        </p>
+        <div data-role="outlet">Home routes</div>
+        `;
     }
 
     /**
@@ -28,6 +34,4 @@ export class HeaderComponent extends HTMLElement {
 
     }
 
-}
-
-customElements.define('header-component', HeaderComponent);
+});

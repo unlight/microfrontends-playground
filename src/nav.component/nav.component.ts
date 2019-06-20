@@ -1,5 +1,8 @@
-const style = require('./nav.component.css');
-const template = require('./nav.component.html');
+const styles = document.createElement('style');
+styles.textContent = require('./nav.component.css');
+
+const template = document.createElement('template');
+template.innerHTML = require('./nav.component.html');
 
 export class NavComponent extends HTMLElement {
 
@@ -12,24 +15,29 @@ export class NavComponent extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
+    get shroot() {
+        if (!this.shadowRoot) {
+            throw new Error('shadowRoot is required');
+        }
+        return this.shadowRoot;
+    }
+
     /**
      * Invoked each time the custom element is appended into a document-connected element.
      * This will happen each time the node is moved, and may happen before the element's contents
      * have been fully parsed
      */
     connectedCallback() {
-        this.shadowRoot.innerHTML = `
-            <style>${String(style)}</style>
-            ${template}
-        `;
-        this.shadowRoot.addEventListener('click', this);
+        this.shroot.appendChild(styles.cloneNode(true));
+        this.shroot.appendChild(<Node>document.importNode(template.content, true).firstElementChild);
+        this.shroot.addEventListener('click', this);
     }
 
     /**
      * Invoked each time the custom element is disconnected from the document's DOM.
      */
     disconnectedCallback() {
-        this.shadowRoot.removeEventListener('click', this);
+        this.shroot.removeEventListener('click', this);
     }
 
     /**
@@ -45,7 +53,7 @@ export class NavComponent extends HTMLElement {
         if (event.type === 'click' && anchor && anchor.nodeName === 'A') {
             event.preventDefault();
             const detail = { href: anchor.getAttribute('href') };
-            this.shadowRoot.dispatchEvent(new CustomEvent('navigate', { composed: true, bubbles: true, detail }));
+            this.shroot.dispatchEvent(new CustomEvent('navigate', { composed: true, bubbles: true, detail }));
         }
     }
 
