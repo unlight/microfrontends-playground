@@ -52,8 +52,8 @@ export class NavComponent extends HTMLElement {
         const anchor = (event.target as HTMLAnchorElement);
         if (event.type === 'click' && anchor && anchor.nodeName === 'A') {
             event.preventDefault();
-            const detail = { href: anchor.getAttribute('href') };
-            this.shroot.dispatchEvent(new CustomEvent('navigate', { composed: true, bubbles: true, detail }));
+            const detail = { href: anchor.href };
+            window.dispatchEvent(new CustomEvent('navigate', { composed: true, bubbles: true, detail }));
         }
     }
 

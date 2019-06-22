@@ -24,7 +24,7 @@ export class EntryListComponent extends HTMLElement {
      * have been fully parsed
      */
     connectedCallback() {
-        if (this.shadowRoot) {
+        if (!this.shadowRoot.firstChild) {
             this.shadowRoot.appendChild(styles.cloneNode(true));
             const element = document.importNode(template.content, true).firstElementChild;
             this.shadowRoot.appendChild(<Node>element);
@@ -35,7 +35,6 @@ export class EntryListComponent extends HTMLElement {
      * Invoked each time the custom element is disconnected from the document's DOM.
      */
     disconnectedCallback() {
-
     }
 
     /**

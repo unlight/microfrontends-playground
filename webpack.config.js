@@ -38,7 +38,7 @@ module.exports = async (options = {}) => {
             app: `${sourcePath}/main.ts`,
             header: `${sourcePath}/header.component/header.component.ts`,
             nav: `${sourcePath}/nav.component/nav.component.ts`,
-            entry_list: `${sourcePath}/entry-list.component/entry-list.component.ts`,
+            'entry-list': `${sourcePath}/entry-list.component/entry-list.component.ts`,
             home: `${sourcePath}/home.component/home.component.ts`,
         },
         output: {
@@ -59,6 +59,7 @@ module.exports = async (options = {}) => {
             contentBase: [buildPath],
             overlay: false,
             disableHostCheck: true,
+            historyApiFallback: true,
             stats: {
                 warningsFilter: [
                     'require function is used',

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@shinin/load-script": "^1.0.4",
-    "cherrytree": "^2.4.1",
+    "a-wc-router": "1.1.4",
     "tslib": "^1.10.0"
   },
   "devDependencies": {

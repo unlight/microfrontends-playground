@@ -10,7 +10,7 @@ export class HeaderComponent extends HTMLElement {
      * have been fully parsed
      */
     connectedCallback() {
-        this.innerHTML = '<h1>Microfrontends</h1>';
+        this.innerHTML = '<h2>Microfrontends playground</h2>';
     }
 
     /**
