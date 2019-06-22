@@ -1,7 +1,7 @@
-customElements.define('home-component', class HomeComponent extends HTMLElement {
+customElements.define('feature-component', class FeatureComponent extends HTMLElement {
 
     static get observedAttributes() {
-        return [];
+        return ['name'];
     }
 
     /**
@@ -10,17 +10,7 @@ customElements.define('home-component', class HomeComponent extends HTMLElement 
      * have been fully parsed
      */
     connectedCallback() {
-        this.innerHTML = `<h4>Home</h4>
-        <p>
-            <a href="/home/feature/1">Feature 1</a>
-            <a href="(home:feature-component:name=2)">Feature 2</a>
-        </p>
-        <a-router>
-            <an-outlet name="home"></an-outlet>
-            <a-route path="/feature" element="feature-component"></a-route>
-            <a-route path="*"><template>Page in home not found</template></a-route>
-        </a-route>
-        `;
+        this.innerHTML = `Feature ${this.getAttribute('name')}`;
     }
 
     /**
@@ -35,7 +25,7 @@ customElements.define('home-component', class HomeComponent extends HTMLElement 
      * Which attributes to notice change for is specified in a static get observedAttributes method
      */
     attributeChangedCallback(name, oldValue, newValue) {
-
+        console.log('attributeChangedCallback', name, newValue);
     }
 
 });

@@ -4,9 +4,11 @@ import 'a-wc-router/src/router';
 import { RouterElement } from 'a-wc-router/src/routes-router';
 import './style.css';
 
+import './feature.component/feature.component';
+
 loadScript('header.js');
 loadScript('nav.js');
 
-window.addEventListener('navigate', (event) => {
-    RouterElement.navigate(event.detail.href);
-});
+// window.addEventListener('navigate', (event) => {
+//     RouterElement.navigate(event.detail.href);
+// });
